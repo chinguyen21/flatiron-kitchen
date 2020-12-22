@@ -1,0 +1,18 @@
+<h5>
+<%= form_for(@recipe) do |f| %>
+  <% if @recipe.errors.any? %>
+    <ul>
+    <% @recipe.errors.full_messages.each do |message| %>
+      <h3 id="error"><%= message %></h3>
+    <% end %>
+    </ul>
+  <% end %>
+
+
+  <label id="label">Name</label><br>
+  <%= f.text_field :name %><br><br>
+  <%= f.collection_check_boxes :ingredients, Ingredient.all, :id, :name%>
+  <%= f.submit %>
+<% end %>
+
+</h5>
